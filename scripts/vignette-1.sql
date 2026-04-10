@@ -176,19 +176,6 @@ ORDER BY total_sales DESC;
 -- We'll now start working with a smaller dataset, so we can scale the warehouse back down
 ALTER WAREHOUSE my_wh SET warehouse_size = 'XSmall';
 
-/*  3. Basic Transformation Techniques
-
-    Now that our warehouse is configured and running, the plan is to get an understanding of the distribution 
-    of our trucks' manufacturers, however, this information is embedded in another column 'truck_build' that stores
-    information about the year, make and model in a VARIANT data type. 
-
-    VARIANT data types are examples of semi-structured data. They can store any type of data including OBJECT, 
-    ARRAY and other VARIANT values. In our case, the truck_build stores a single OBJECT which contains three distinct 
-    VARCHAR values for year, make and model.
-    
-    We'll now isolate all three properties into their own respective columns to allow for simpler and easier analytics. 
-*/
-SELECT truck_build FROM raw_pos.truck_details;
 
 /*  Zero Copy Cloning
 
